@@ -1,10 +1,15 @@
 # howto run
 
+Run renders.
+
+````
+docker run -p 80:80 -d egotec/openstreetmap bash /start.sh
+````
+
+Run bash.
+
 ````
 docker run -p 80:80 -it egotec/openstreetmap bash
-bash /start.sh
-su renderaccount
-renderd -f -c /usr/local/etc/renderd.conf
 ````
 
 # create image
