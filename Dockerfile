@@ -73,3 +73,13 @@ RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
 
 # Setting up your webserver
 
+# Configuring Apache
+
+RUN mkdir /var/lib/mod_tile && \
+	chown renderaccount /var/lib/mod_tile && \
+	mkdir /var/run/renderd && \
+	chown renderaccount /var/run/renderd
+
+RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" > /etc/apache2/conf-available/mod_tile.conf && \
+	a2enconf mod_tile
+
