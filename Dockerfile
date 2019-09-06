@@ -58,15 +58,14 @@ RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
 
 RUN mkdir /tmp/data && cd /tmp/data && wget http://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
 
-COPY init.sql /tmp/init.sql
+COPY *.sql /tmp/
 USER postgres
 RUN /etc/init.d/postgresql start && \ 
 	createuser renderaccount && \
         createdb -E UTF8 -O renderaccount gis && \
 	cat /tmp/init.sql | psql && \
-	echo "\dx" | psql && \
-	echo "SHOW search_path" | psql && \
 	osm2pgsql -d gis --create --slim -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 2500 --number-processes 8 -S ~/src/openstreetmap-carto/openstreetmap-carto.style /tmp/data/azerbaijan-latest.osm.pbf && \
+	cat /tmp/alter.sql | psql && \
 	etc/init.d/postgresql stop
 
 USER root
@@ -83,7 +82,6 @@ RUN mkdir /var/lib/mod_tile && \
 RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" > /etc/apache2/conf-available/mod_tile.conf && \
 	a2enconf mod_tile
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY alter.sql /tmp/alter.sql
 
 RUN ln -s /var/lib/postgresql/src /home/renderaccount/src
 
