@@ -48,6 +48,12 @@ RUN npm install -g carto
 RUN cd /var/lib/postgresql/ && mkdir src && cd src && git clone git://github.com/gravitystorm/openstreetmap-carto.git
 RUN cd /var/lib/postgresql/src/openstreetmap-carto && carto project.mml > mapnik.xml
 
+# Fonts
+RUN apt-get -y install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
+
+# Shapefile download
+RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
+
 # Loading data
 
 RUN mkdir /tmp/data && cd /tmp/data && wget http://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf
@@ -64,12 +70,6 @@ RUN /etc/init.d/postgresql start && \
 	etc/init.d/postgresql stop
 
 USER root
-
-# Fonts
-RUN apt-get -y install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
-
-# Shapefile download
-RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
 
 # Setting up your webserver
 
