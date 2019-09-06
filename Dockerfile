@@ -83,6 +83,7 @@ RUN mkdir /var/lib/mod_tile && \
 RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" > /etc/apache2/conf-available/mod_tile.conf && \
 	a2enconf mod_tile
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY alter.sql /tmp/alter.sql
 
 RUN ln -s /var/lib/postgresql/src /home/renderaccount/src
 
