@@ -40,3 +40,7 @@ Einen clean build macht man, wenn man sicher gehen möchte, das alles neu erzeug
 Normalerweise merkt docker automatisch, ob sich im Dockerfile etwas geändert hat.
 
 Use flag `--no-cache=true`
+
+# literature
+
+https://switch2osm.org/manually-building-a-tile-server-18-04-lts/
