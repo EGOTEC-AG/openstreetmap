@@ -1,6 +1,6 @@
 # howto run
 
-Run renders.
+Run renderd.
 
 ````
 docker run -p 80:80 -d egotec/openstreetmap bash /start.sh
