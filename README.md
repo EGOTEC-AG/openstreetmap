@@ -40,3 +40,14 @@ Einen clean build macht man, wenn man sicher gehen möchte, das alles neu erzeug
 Normalerweise merkt docker automatisch, ob sich im Dockerfile etwas geändert hat.
 
 Use flag `--no-cache=true`
+
+# Beispiellinks
+
+## Deutschland
+
+- https://maps.egotec.com/hot/4/8/5.png
+- https://maps.egotec.com/hot/5/16/10.png
+- https://maps.egotec.com/hot/5/17/10.png
+- https://maps.egotec.com/hot/6/33/21.png
+- https://maps.egotec.com/hot/7/67/43.png
+- https://maps.egotec.com/hot/8/134/87.png
