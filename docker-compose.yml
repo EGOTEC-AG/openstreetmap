@@ -2,7 +2,7 @@ version: '2'
 services:
 
   openstreetmap:
-      image: egotec/openstreetmap:germany
+    image: egotec/openstreetmap:germany
     ports:
       - 22080:80
     command: bash /start.sh
