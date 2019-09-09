@@ -45,11 +45,9 @@ RUN ldconfig
 
 RUN apt-get -y install npm nodejs
 RUN npm install -g carto
+RUN apt-get -y install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
 RUN cd /var/lib/postgresql/ && mkdir src && cd src && git clone git://github.com/gravitystorm/openstreetmap-carto.git
 RUN cd /var/lib/postgresql/src/openstreetmap-carto && carto project.mml > mapnik.xml
-
-# Fonts
-RUN apt-get -y install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
 
 # Shapefile download
 RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
