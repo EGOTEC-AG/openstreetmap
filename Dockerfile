@@ -56,7 +56,7 @@ RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
 
 # Loading data
 
-RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe/luxembourg-latest.osm.pbf
+RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe/germany-latest.osm.pbf
 
 COPY copy/tmp/* /tmp/
 USER postgres
@@ -64,7 +64,7 @@ RUN /etc/init.d/postgresql start && \
 	createuser renderaccount && \
         createdb -E UTF8 -O renderaccount gis && \
 	cat /tmp/init.sql | psql && \
-	osm2pgsql -d gis --create --slim -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 2500 --number-processes 8 -S ~/src/openstreetmap-carto/openstreetmap-carto.style /tmp/data/luxembourg-latest.osm.pbf && \
+	osm2pgsql -d gis --create --slim -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 2500 --number-processes 8 -S ~/src/openstreetmap-carto/openstreetmap-carto.style /tmp/data/germany-latest.osm.pbf && \
 	cat /tmp/alter.sql | psql && \
 	etc/init.d/postgresql stop
 
