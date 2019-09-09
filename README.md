@@ -43,6 +43,7 @@ docker push egotec/openstreetmap
 - https://maps.egotec.com/hot/7/67/43.png
 - https://maps.egotec.com/hot/8/134/87.png
 
-# literatur
+# literature
 
 - https://switch2osm.org/manually-building-a-tile-server-18-04-lts/
+- maps: http://download.geofabrik.de
