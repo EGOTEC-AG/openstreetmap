@@ -32,18 +32,9 @@ docker build -t egotec/openstreetmap .
 docker push egotec/openstreetmap
 ````
 
-Jetzt ist die aktuelle Version online. Alle anderen Punkte sind optional.
+# example links
 
-# clean rebuild
-
-Einen clean build macht man, wenn man sicher gehen möchte, das alles neu erzeugt wird.
-Normalerweise merkt docker automatisch, ob sich im Dockerfile etwas geändert hat.
-
-Use flag `--no-cache=true`
-
-# Beispiellinks
-
-## Deutschland
+## Germany
 
 - https://maps.egotec.com/hot/4/8/5.png
 - https://maps.egotec.com/hot/5/16/10.png
