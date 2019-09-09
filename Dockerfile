@@ -58,7 +58,7 @@ RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
 
 RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe/luxembourg-latest.osm.pbf
 
-COPY *.sql /tmp/
+COPY copy/tmp/* /tmp/
 USER postgres
 RUN /etc/init.d/postgresql start && \ 
 	createuser renderaccount && \
@@ -81,8 +81,8 @@ RUN mkdir /var/lib/mod_tile && \
 
 RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" > /etc/apache2/conf-available/mod_tile.conf && \
 	a2enconf mod_tile
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY copy/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN ln -s /var/lib/postgresql/src /home/renderaccount/src
 
-COPY start.sh /start.sh
+COPY copy/start.sh /start.sh
