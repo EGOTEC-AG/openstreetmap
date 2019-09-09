@@ -1,35 +1,7 @@
 # howto run
 
-Run renderd.
-
 ````
 docker run -p 80:80 -d egotec/openstreetmap bash /start.sh
-````
-
-Run bash.
-
-````
-docker run -p 80:80 -it egotec/openstreetmap bash
-````
-
-# create image
-
-## update ubuntu image
-
-````
-docker pull ubuntu:18.04
-````
-
-## build image
-
-````
-docker build -t egotec/openstreetmap .
-````
-
-## push to hub.docker.com
-
-````
-docker push egotec/openstreetmap
 ````
 
 # example links
