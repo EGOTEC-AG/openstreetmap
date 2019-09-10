@@ -2,6 +2,10 @@
   "name": "maps.egotec.com",
   "version": "1.0.0",
   "description": "Example",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/EGOTEC-GmbH/openstreetmap"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +13,7 @@
     "build": "parcel build --public-url . index.html"
   },
   "author": "EGOTEC",
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "dependencies": {
     "ol": "^5.3.3"
   },
