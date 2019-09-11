@@ -8,17 +8,6 @@ RUN apt-get -y install libboost-all-dev git-core tar unzip wget bzip2 build-esse
 RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime && export DEBIAN_FORNTEND=noninteractive
 RUN apt-get -y install postgresql postgresql-contrib postgis postgresql-10-postgis-2.4 postgresql-10-postgis-scripts
 
-#USER postgres
-#RUN /etc/init.d/postgresql start && \ 
-#	createuser renderaccount && \
-#        createdb -E UTF8 -O renderaccount gis && \
-#	echo "\c gis" | psql && \
-#	echo "CREATE EXTENSION postgis;" | psql && \
-#	echo "CREATE EXTENSION hstore;" | psql && \
-#	echo "ALTER TABLE geometry_columns OWNER TO renderaccount;" | psql && \ 
-#	echo "ALTER TABLE spatial_ref_sys OWNER TO renderaccount;" | psql && \
-#	/etc/init.d/postgresql stop
-
 USER root
 RUN useradd -m renderaccount
 
@@ -54,8 +43,8 @@ RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
 
 # Loading data
 
-#RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe/liechtenstein-latest.osm.pbf
-RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe-latest.osm.pbf
+RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe/liechtenstein-latest.osm.pbf
+#RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe-latest.osm.pbf
 
 COPY copy/tmp/* /tmp/
 USER postgres
