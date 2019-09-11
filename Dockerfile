@@ -63,7 +63,7 @@ RUN /etc/init.d/postgresql start && \
 	createuser renderaccount && \
         createdb -E UTF8 -O renderaccount gis && \
 	cat /tmp/init.sql | psql && \
-	osm2pgsql -d gis --create --slim -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 2500 --number-processes 8 -S ~/src/openstreetmap-carto/openstreetmap-carto.style /tmp/data/*.pbf && \
+	osm2pgsql -d gis --create --slim -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 16000 --number-processes 16 -m -S ~/src/openstreetmap-carto/openstreetmap-carto.style --flat-nodes /tmp/flat /tmp/data/*.pbf && \
 	cat /tmp/alter.sql | psql && \
 	etc/init.d/postgresql stop
 
