@@ -44,7 +44,7 @@ RUN cd /var/lib/postgresql/src/openstreetmap-carto && scripts/get-shapefiles.py
 # Loading data
 
 # austria germany hungary lichtenstein luxembourg switzerland
-RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe/germany-latest.osm.pbf
+RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe/lichtenstein-latest.osm.pbf
 
 #RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe-latest.osm.pbf
 
