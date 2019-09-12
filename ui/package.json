@@ -1,0 +1,23 @@
+{
+  "name": "maps.egotec.com",
+  "version": "1.0.0",
+  "description": "Example",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/EGOTEC-GmbH/openstreetmap"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . index.html"
+  },
+  "author": "EGOTEC",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "ol": "^5.3.3"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  }
+}
