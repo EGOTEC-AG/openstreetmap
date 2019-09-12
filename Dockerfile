@@ -48,13 +48,15 @@ RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.
 
 #RUN mkdir /tmp/data && cd /tmp/data && wget --progress=dot:giga http://download.geofabrik.de/europe-latest.osm.pbf
 
+# parameters for big computers
+# -C 16000 --number-processes 16
 COPY copy/tmp/* /tmp/
 USER postgres
 RUN /etc/init.d/postgresql start && \ 
 	createuser renderaccount && \
         createdb -E UTF8 -O renderaccount gis && \
 	cat /tmp/init.sql | psql && \
-	osm2pgsql -d gis --create --slim -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -C 16000 --number-processes 16 -m -S ~/src/openstreetmap-carto/openstreetmap-carto.style --flat-nodes /tmp/flat /tmp/data/*.pbf && \
+	osm2pgsql --number-processes 4 -d gis --create --slim -G --hstore --tag-transform-script ~/src/openstreetmap-carto/openstreetmap-carto.lua -m -S ~/src/openstreetmap-carto/openstreetmap-carto.style --flat-nodes /tmp/flat /tmp/data/*.pbf && \
 	cat /tmp/alter.sql | psql && \
 	etc/init.d/postgresql stop
 
