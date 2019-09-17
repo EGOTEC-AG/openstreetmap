@@ -82,7 +82,7 @@ RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" > /etc/ap
 	a2enconf mod_tile
 COPY copy/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-COPY copy/build/* /var/www/html/
+COPY copy/dist/* /var/www/html/
 
 RUN ln -s /var/lib/postgresql/src /home/renderaccount/src
 
