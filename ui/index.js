@@ -8,8 +8,7 @@ const centerLng = 9.13;
 const centerLat = 49.34;
 
 let url = "/hot/{z}/{x}/{y}.png";
-
-if (window.location.port == 1234) {
+if (window.location.hostname == 'localhost') {
     // local with domain
     url = "https://maps.egotec.com" + url;
 }
