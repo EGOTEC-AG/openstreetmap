@@ -76,7 +76,7 @@ RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" > /etc/ap
 COPY copy/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # @UI
-COPY copy/build/* /var/www/html/
+COPY copy/dist/* /var/www/html/
 
 # owerwrite /usr/local/etc/renderd.conf
 COPY copy/renderd.conf /usr/local/etc/renderd.conf
